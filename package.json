@@ -4,7 +4,7 @@
     "description": "chat application for practice",
     "main": "app.js",
     "scripts": {
-        "dev": "nodemon src/app.ts",
+        "dev": "nodemon -r tsconfig-paths/register src/app.ts",
         "prepare": "husky install",
         "commit:cz": "cz"
     },
@@ -21,6 +21,7 @@
         "helmet": "^6.0.1",
         "hpp": "^0.2.3",
         "http-status-codes": "^2.2.0",
+        "mongoose": "^6.9.1",
         "typescript": "^4.9.5"
     },
     "devDependencies": {
@@ -31,6 +32,7 @@
         "@types/hpp": "^0.2.2",
         "commitizen": "^4.3.0",
         "husky": "^8.0.3",
-        "nodemon": "^2.0.20"
+        "nodemon": "^2.0.20",
+        "tsconfig-paths": "^4.1.2"
     }
 }
