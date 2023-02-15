@@ -1,11 +1,12 @@
 import mongoose from 'mongoose';
+import { config } from 'src/config';
 
 export default () => {
     const connect = () => {
         mongoose.set('strictQuery', false);
         mongoose
             .connect(
-                `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@cluster0.iqj6agr.mongodb.net/?retryWrites=true&w=majority`
+                `mongodb+srv://${config.DB_USERNAME}:${config.DB_PASS}@cluster0.iqj6agr.mongodb.net/?retryWrites=true&w=majority`
             )
             .then(() => {
                 console.log('Success DB');

@@ -1,5 +1,3 @@
-import * as dotenv from 'dotenv';
-dotenv.config();
 import {
     Application,
     json,
@@ -16,6 +14,7 @@ import cookieSession from 'cookie-session';
 import HTTP_STATUS from 'http-status-codes';
 import compression from 'compression';
 import 'express-async-errors';
+import { config } from 'src/config';
 
 export class ChatServer {
     private app: Application;
@@ -36,9 +35,9 @@ export class ChatServer {
         app.use(
             cookieSession({
                 name: 'session',
-                keys: ['test1', 'test2'],
+                keys: [config.SECRET_KEY_ONE!, config.SECRET_KEY_TWO!],
                 maxAge: 24 * 7 * 3600000,
-                secure: false,
+                secure: config.NODE_ENV !== 'development',
             })
         );
         app.use(hpp());
@@ -76,7 +75,7 @@ export class ChatServer {
 
     private startHttpsServer(httpsServer: https.Server): void {
         httpsServer.listen(
-            (process.env.PORT,
+            (config.PORT,
             () => {
                 console.log(`Server running on PORT: ${process.env.PORT}`);
             })
