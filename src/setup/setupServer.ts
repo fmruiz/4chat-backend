@@ -63,9 +63,23 @@ export class ChatServer {
 
     private globalErrorHandler(app: Application): void {}
 
-    private startServer(app: Application): void {}
+    private async startServer(app: Application): Promise<void> {
+        try {
+            const httpServer: https.Server = new https.Server(app);
+            this.startHttpsServer(httpServer);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     private createSocketIO(httpsServer: https.Server): void {}
 
-    private startHttpsServer(httpsServer: https.Server): void {}
+    private startHttpsServer(httpsServer: https.Server): void {
+        httpsServer.listen(
+            (process.env.PORT,
+            () => {
+                console.log(`Server running on PORT: ${process.env.PORT}`);
+            })
+        );
+    }
 }

@@ -4,7 +4,7 @@
     "description": "chat application for practice",
     "main": "app.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "nodemon src/app.ts",
         "prepare": "husky install",
         "commit:cz": "cz"
     },
@@ -30,6 +30,7 @@
         "@types/express": "^4.17.17",
         "@types/hpp": "^0.2.2",
         "commitizen": "^4.3.0",
-        "husky": "^8.0.3"
+        "husky": "^8.0.3",
+        "nodemon": "^2.0.20"
     }
 }
